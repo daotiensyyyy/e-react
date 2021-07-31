@@ -1,0 +1,27 @@
+$yellow-color: rgb(224, 128, 2);
+.navbar{
+    background-color: rgb(17, 17, 17);
+    padding:0px;
+    .navbar-brand{
+        background-color: $yellow-color;
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+        border-radius:10px;
+        
+    }
+    .navbar-nav{
+        .nav-item{
+            .nav-link{
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                padding: 16px;
+                &:hover{
+                    
+                    color: $yellow-color !important;
+                }
+            }
+        }
+    }
+}

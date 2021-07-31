@@ -1,0 +1,86 @@
+$yellow-color: rgb(224, 128, 2);
+$font: 'Candara', cursive;
+
+*{
+    font-family: $font;
+    .navbar{
+        background-color: rgb(17, 17, 17);
+        padding:0;
+        .navbar-brand{
+            background-color: $yellow-color;
+            padding: 10px;
+            font-weight: bold;
+            color: white;
+            border-radius:10px;
+            
+        }
+        .navbar-nav{
+            .nav-item{
+                .nav-link{
+                    color: white;
+                    font-weight: bold;
+                    font-size: 18px;
+                    padding: 16px;
+                    &:hover{
+                        
+                        color: $yellow-color !important;
+                    }
+                }
+            }
+        }
+    }
+    .product-container{
+        padding-top: 20px;
+        .category{
+            background-color: rgb(236, 236, 236);
+            padding: 0px;
+            .categories{
+                background-color:$yellow-color;
+                color: white;
+                & li{
+                    list-style: none;
+                    padding:10px;
+                }
+            }
+            .categories-item{
+                padding:0px;
+                & li{
+                    cursor: pointer;
+                    list-style: none;
+                    padding:10px;
+                    &:hover{
+                        background-color: rgb(255, 255, 255);
+                        transition: ease-out 1.5s;
+                    }
+                }
+            }
+        }
+        .product-list{
+            .product-list-col{
+                .card{
+                    cursor: pointer;
+                    &:hover{
+                        box-shadow: 5px 5px 5px #AAA;
+                        transition: ease-in 0.5s;
+                        
+                    }
+                    .card-body{
+                        .price{
+                            color: $yellow-color;
+                        }
+                        .btn-detail{
+                            border: 1px solid black;
+                            border-radius: 20px;
+                            padding: 10px 20px;
+                            &:hover{
+                                background-color:black !important;
+                                color: $yellow-color !important;
+                                transition: ease-in-out 0.5s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

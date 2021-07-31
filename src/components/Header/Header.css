@@ -1,0 +1,24 @@
+.navbar {
+  background-color: #111111;
+  padding: 0;
+}
+
+.navbar .navbar-brand {
+  background-color: #e08002;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 16px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: #e08002 !important;
+}
+/*# sourceMappingURL=Header.css.map */
