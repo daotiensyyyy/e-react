@@ -25,7 +25,7 @@ function ProductRow(props) {
 
     const handleRestoreClick = () => {
         if (onHandleRestore) {
-            onHandleRestore(product);
+            onHandleRestore(product._id);
         }
     }
 

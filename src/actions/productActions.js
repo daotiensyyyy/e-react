@@ -9,7 +9,7 @@ toast.configure();
 const notify = (notify) => {
     switch (notify) {
         case "EIDT_PRODUCT_SUCCESS": {
-            return toast.success("Login successful!", {
+            return toast.success("Product has been updated!", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 1500,
                 pauseOnHover: false,
@@ -17,7 +17,7 @@ const notify = (notify) => {
         }
 
         case "RESTORE_PRODUCT_SUCCESS": {
-            return toast.success("Login successful!", {
+            return toast.success("Product has been restored!", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 1500,
                 pauseOnHover: false,
@@ -25,7 +25,7 @@ const notify = (notify) => {
         }
 
         case "EIDT_PRODUCT_FAILED": {
-            return toast.error("Login failed!", {
+            return toast.error("Update failed!", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 1500,
                 pauseOnHover: false,
@@ -33,7 +33,7 @@ const notify = (notify) => {
         }
 
         case "RESTORE_PRODUCT_FAILED": {
-            return toast.error("Login failed!", {
+            return toast.error("Restore failed!", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 1500,
                 pauseOnHover: false,
@@ -119,7 +119,7 @@ export const actionAdminEditProduct = (id, value) => {
 export const actionAdminRestoreProduct = (value) => {
 
     return (dispatch) => {
-        return Services.adminEditProduct(value)
+        return Services.adminRestoreProduct(value)
             .then((result) => {
                 dispatch(createAction(Types.ADMIN_RESTORE_PRODUCT, result.data));
                 notify("RESTORE_PRODUCT_SUCCESS");

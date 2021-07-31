@@ -3,6 +3,7 @@ import * as Types from '../app/types';
 const initialState = {
     products: [],
     productDetail: null,
+    deleted: [],
 }
 
 const productReducer = (state = initialState, action) => {
@@ -34,7 +35,7 @@ const productReducer = (state = initialState, action) => {
             return { ...state };
 
         case Types.ADMIN_RESTORE_PRODUCT:
-            state.products = action.payload;
+            state.products.push(action.payload)
             return { ...state };
 
         default: return state
