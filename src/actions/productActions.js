@@ -24,6 +24,14 @@ const notify = (notify) => {
             });
         }
 
+        case "DELETE_PRODUCT_SUCCESS": {
+            return toast.success("Product has been deleted!", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 1500,
+                pauseOnHover: false,
+            });
+        }
+
         case "EIDT_PRODUCT_FAILED": {
             return toast.error("Update failed!", {
                 position: toast.POSITION.TOP_RIGHT,
@@ -34,6 +42,14 @@ const notify = (notify) => {
 
         case "RESTORE_PRODUCT_FAILED": {
             return toast.error("Restore failed!", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 1500,
+                pauseOnHover: false,
+            });
+        }
+
+        case "DELETE_PRODUCT_FAILED": {
+            return toast.error("Delete failed!", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 1500,
                 pauseOnHover: false,
@@ -127,6 +143,36 @@ export const actionAdminRestoreProduct = (value) => {
             .catch((err) => {
                 console.log(err);
                 notify("RESTORE_PRODUCT_FAILED");
+            });
+    };
+
+}
+
+export const actionAdminFetchDeletedProducts = () => {
+
+    return (dispatch) => {
+        return Services.adminGetDeletedProducts()
+            .then((result) => {
+                dispatch(createAction(Types.ADMIN_GET_DELETED_PRODUCTS, result.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+}
+
+export const actionAdminDeleteProduct = (value) => {
+
+    return (dispatch) => {
+        return Services.adminDeleteProduct(value)
+            .then((result) => {
+                dispatch(createAction(Types.ADMIN_DELETE_PRODUCT, result.data));
+                notify("DELETE_PRODUCT_SUCCESS");
+            })
+            .catch((err) => {
+                console.log(err);
+                notify("DELETE_PRODUCT_FAILED");
             });
     };
 

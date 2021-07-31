@@ -55,3 +55,23 @@ export const adminRestoreProduct = (value) => {
         },
     })
 }
+
+export const adminGetDeletedProducts = () => {
+    return axios({
+        url: `${domain.adminUrl}trash/products`,
+        method: "GET",
+        headers: {
+            "x-access-token": localStorage.getItem("accessToken"),
+        },
+    });
+};
+
+export const adminDeleteProduct = (value) => {
+    return axios({
+        url: `${domain.adminUrl}product/${value}/delete`,
+        method: "DELETE",
+        headers: {
+            "x-access-token": localStorage.getItem("accessToken"),
+        },
+    })
+}

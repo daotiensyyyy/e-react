@@ -5,26 +5,23 @@ import ProductRow from '../ProductRow';
 
 ProductList.propTypes = {
     productList: PropTypes.array,
-    onHandleProductEditClick: PropTypes.func,
-    onHandleProductDeleteClick: PropTypes.func,
+    onHandleProductRestoreClick: PropTypes.func,
 };
 
 ProductList.defaultProps = {
     productList: [],
-    onHandleProductEditClick: null,
-    onHandleProductDeleteClick: null,
+    onHandleProductRestoreClick: null,
 }
 
 function ProductList(props) {
-    const { productList, onHandleProductEditClick, onHandleProductDeleteClick } = props;
+    const { productList, onHandleProductRestoreClick } = props;
     return (
         <>
             {productList.map(product =>
                 <ProductRow
                     key={product._id}
                     product={product}
-                    onHandleClick={onHandleProductEditClick}
-                    onHandleDeleteClick={onHandleProductDeleteClick}
+                    onHandleRestore={onHandleProductRestoreClick}
                 />
             )
             }

@@ -30,13 +30,19 @@ const productReducer = (state = initialState, action) => {
             state.productDetail = action.payload;
             return { ...state };
 
-        case Types.ADMIN_DELETE_PRODUCT:
-            state.products = action.payload;
-            return { ...state };
-
         case Types.ADMIN_RESTORE_PRODUCT:
             state.products.push(action.payload)
+            state.deleted = null;
             return { ...state };
+
+        case Types.ADMIN_GET_DELETED_PRODUCTS:
+            state.deleted = action.payload;
+            return { ...state };
+
+        case Types.ADMIN_DELETE_PRODUCT:
+            state.deleted.push(action.payload);
+            return { ...state };
+
 
         default: return state
     }

@@ -25,8 +25,9 @@ function AdminViewProductPage(props) {
         history.push(productUrl);
     }
 
-    const handleRestoreClick = (id) => {
-        dispatch(Actions.actionAdminRestoreProduct(id));
+    const handleDeleteClick = (id) => {
+        dispatch(Actions.actionAdminDeleteProduct(id));
+        history.push('/admin-manage-product/trash');
     }
     return (
         <div className="container">
@@ -41,7 +42,7 @@ function AdminViewProductPage(props) {
                     <Table
                         products={products}
                         onProductEditClick={handleEditClick}
-                        onProductRestoreClick={handleRestoreClick}
+                        onProductDeleteClick={handleDeleteClick}
                     />
                 </div>
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
