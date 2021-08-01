@@ -15,6 +15,7 @@ import AdminEditUserPage from './User/pages/AdminEditUserPage';
 import AdminViewProductPage from './User/pages/AdminViewProductPage';
 import AdminEditProductPage from './User/pages/AdminEditProductPage';
 import AdminViewDeletedProductPage from './User/pages/AdminViewDeletedProductPage';
+import AdminCreateProductPage from './User/pages/AdminCreateProductPage';
 
 const User = React.lazy(() => import('../features/User'));
 
@@ -42,6 +43,7 @@ function Routes(props) {
             <PrivateRoute exact path={`${match.url}admin-manage-product`} component={AdminViewProductPage} />
             <PrivateRoute exact path={`${match.url}admin-manage-product/edit/:id`} component={AdminEditProductPage} />
             <PrivateRoute exact path={`${match.url}admin-manage-product/trash`} component={AdminViewDeletedProductPage} />
+            <PrivateRoute exact path={`${match.url}admin-manage-product/create`} component={AdminCreateProductPage} />
 
         </Switch>
     );

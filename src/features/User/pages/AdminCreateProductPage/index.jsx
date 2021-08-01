@@ -1,12 +1,12 @@
-import { Button, makeStyles, TextField } from '@material-ui/core';
+import { Button, FormControl, InputLabel, makeStyles, Select, TextField } from '@material-ui/core';
 import { Form, Formik } from 'formik';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import * as Actions from '../../../../actions/productActions';
 
-AdminEditProductPage.propTypes = {
+AdminCreateProductPage.propTypes = {
 
 };
 
@@ -18,45 +18,45 @@ const useStyles = makeStyles((theme) => ({
 
         },
     },
+    formControl: {
+        margin: theme.spacing(1),
+        width: '50%',
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
 }));
 
-function AdminEditProductPage(props) {
+function AdminCreateProductPage(props) {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
-
-    const productList = useSelector(state => state.productList);
-    const { productDetail } = productList;
-    console.log('product', productDetail);
-
-    useEffect(() => {
-        dispatch(Actions.actionAdminFetchProductById(id));
-    }, [dispatch, id]);
 
     const initialValues = {
-        "_id": id,
         "name": "",
         "price": 0,
         "description": "",
+        "categories": "",
     }
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required('This field is required'),
         price: Yup.number().min(1, 'This can not be set as 0').required('This field is required'),
+        description: Yup.string().required('This field is required'),
+        categories: Yup.string().required('This field is required'),
     });
 
     return (
         <>
             <div className="container">
-                <h2 className="text-center">Edit product</h2>
+                <h2 className="text-center">Create product</h2>
                 <div>
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}
                         onSubmit={(values, { setSubmitting }) => {
                             setTimeout(() => {
-                                dispatch(Actions.actionAdminEditProduct(id, values));
+                                dispatch(Actions.actionAdminCreateProduct(values));
                                 history.push('/admin-manage-product');
                                 setSubmitting(false);
                             }, 1000);
@@ -80,18 +80,6 @@ function AdminEditProductPage(props) {
                                     <div>
                                         <TextField
                                             id="filled-basic"
-                                            name="_id"
-                                            label="Product id"
-                                            variant="filled"
-                                            value={values._id}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            disabled
-                                        />
-                                    </div>
-                                    <div>
-                                        <TextField
-                                            id="filled-basic"
                                             name="name"
                                             label="Product name"
                                             variant="filled"
@@ -109,7 +97,7 @@ function AdminEditProductPage(props) {
                                             name="price"
                                             label="Product price"
                                             variant="filled"
-                                            value={values.price || ''}
+                                            value={values.price}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                         />
@@ -127,6 +115,40 @@ function AdminEditProductPage(props) {
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                         />
+                                        {errors.description && touched.description && (
+                                            <p>{errors.description}</p>
+                                        )}
+                                    </div>
+                                    <div>
+                                        {/* <TextField
+                                            id="filled-basic"
+                                            name="categories"
+                                            label="Product category"
+                                            variant="filled"
+                                            value={values.categories}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                        {errors.categories && touched.categories && (
+                                            <p>{errors.categories}</p>
+                                        )} */}
+
+                                        <FormControl variant="filled" className={classes.formControl}>
+                                            <InputLabel htmlFor="filled-category-native-simple">Category</InputLabel>
+                                            <Select
+                                                native
+                                                value={values.categories}
+                                                onChange={handleChange}
+                                                inputProps={{
+                                                    name: 'categories',
+                                                    id: 'filled-categories-native-simple',
+                                                }}
+                                            >
+                                                <option aria-label="None" value="" />
+                                                <option value={"mobile"}>Mobile</option>
+                                                <option value={"laptop"}>Laptop</option>
+                                            </Select>
+                                        </FormControl>
                                     </div>
                                     <div >
                                         <Button
@@ -135,7 +157,7 @@ function AdminEditProductPage(props) {
                                             color="secondary"
                                             type="submit"
                                         >
-                                            Update
+                                            Create
                                         </Button>
                                     </div>
                                 </Form>
@@ -153,4 +175,4 @@ function AdminEditProductPage(props) {
     );
 }
 
-export default AdminEditProductPage;
+export default AdminCreateProductPage;

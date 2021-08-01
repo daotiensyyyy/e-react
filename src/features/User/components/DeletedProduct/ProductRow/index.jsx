@@ -26,7 +26,7 @@ function ProductRow(props) {
         <tr>
             <th scope="row">{product._id}</th>
             <td>{product.name}</td>
-            {/* <td>{product.categories.map(c => c.name)}</td> */}
+            <td>{product.categories.map(c => c.name)}</td>
             <td>{product.price}</td>
             <td>{product.description}</td>
             <td>{product.deletedAt}</td>

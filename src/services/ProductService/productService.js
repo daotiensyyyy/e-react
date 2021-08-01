@@ -75,3 +75,14 @@ export const adminDeleteProduct = (value) => {
         },
     })
 }
+
+export const adminCreateProduct = (data) => {
+    return axios({
+        url: `${domain.adminUrl}create-product`,
+        method: "POST",
+        data: data,
+        headers: {
+            "x-access-token": localStorage.getItem("accessToken"),
+        },
+    })
+}

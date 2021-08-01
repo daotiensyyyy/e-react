@@ -32,6 +32,14 @@ const notify = (notify) => {
             });
         }
 
+        case "CREATE_PRODUCT_SUCCESS": {
+            return toast.success("Create product successfully!", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 1500,
+                pauseOnHover: false,
+            });
+        }
+
         case "EIDT_PRODUCT_FAILED": {
             return toast.error("Update failed!", {
                 position: toast.POSITION.TOP_RIGHT,
@@ -50,6 +58,14 @@ const notify = (notify) => {
 
         case "DELETE_PRODUCT_FAILED": {
             return toast.error("Delete failed!", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 1500,
+                pauseOnHover: false,
+            });
+        }
+
+        case "CREATE_PRODUCT_FAILED": {
+            return toast.error("Create product failed!", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 1500,
                 pauseOnHover: false,
@@ -177,3 +193,17 @@ export const actionAdminDeleteProduct = (value) => {
     };
 
 }
+
+export const actionAdminCreateProduct = (values) => {
+    return (dispatch) => {
+        return Services.adminCreateProduct(values)
+            .then((result) => {
+                dispatch(createAction(Types.ADMIN_CREATE_PRODUCT, result.data));
+                notify("CREATE_PRODUCT_SUCCESS");
+            })
+            .catch((err) => {
+                console.log(err);
+                notify("CREATE_PRODUCT_FAILED");
+            });
+    };
+};

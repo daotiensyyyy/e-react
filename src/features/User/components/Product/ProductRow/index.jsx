@@ -34,7 +34,7 @@ function ProductRow(props) {
         <tr>
             <th scope="row">{product._id}</th>
             <td>{product.name}</td>
-            {/* <td>{product.categories.map(c => c.name)}</td> */}
+            <td>{product.categories.map(c => c.name)}</td>
             <td>{product.price}</td>
             <td>{product.description}</td>
             <IconContext.Provider value={{ color: '#2c873d', size: '20px' }}>

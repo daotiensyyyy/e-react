@@ -32,7 +32,7 @@ const productReducer = (state = initialState, action) => {
 
         case Types.ADMIN_RESTORE_PRODUCT:
             state.products.push(action.payload)
-            state.deleted = null;
+            state.deleted.splice(action.payload);
             return { ...state };
 
         case Types.ADMIN_GET_DELETED_PRODUCTS:
@@ -40,7 +40,12 @@ const productReducer = (state = initialState, action) => {
             return { ...state };
 
         case Types.ADMIN_DELETE_PRODUCT:
+            state.products.splice(action.payload);
             state.deleted.push(action.payload);
+            return { ...state };
+
+        case Types.ADMIN_CREATE_PRODUCT:
+            state.products.push(action.payload);
             return { ...state };
 
 

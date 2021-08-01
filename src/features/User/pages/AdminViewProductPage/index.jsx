@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import * as Actions from '../../../../actions/productActions';
 import Table from '../../components/Product/Table';
 import { BsFillTrashFill } from "react-icons/bs";
+import { MdAddBox } from "react-icons/md";
 import { IconContext } from 'react-icons/lib';
 
 AdminViewProductPage.propTypes = {
@@ -33,10 +34,17 @@ function AdminViewProductPage(props) {
         <div className="container">
             <div className="row">
                 <h2>Product List</h2>
-                <div>
-                    <IconContext.Provider value={{ color: 'black', size: '25px' }}>
-                        <Link to="/admin-manage-product/trash"><BsFillTrashFill /></Link>
-                    </IconContext.Provider>
+                <div className="row">
+                    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <IconContext.Provider value={{ color: 'black', size: '25px' }}>
+                            <Link to="/admin-manage-product/trash"><BsFillTrashFill /></Link>
+                        </IconContext.Provider>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6 d-flex justify-content-end">
+                        <IconContext.Provider value={{ color: 'black', size: '25px' }}>
+                            <Link to="/admin-manage-product/create" alt="Create product"><MdAddBox /></Link>
+                        </IconContext.Provider>
+                    </div>
                 </div>
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <Table
