@@ -37,6 +37,7 @@ function AdminCreateProductPage(props) {
         "price": 0,
         "description": "",
         "categories": "",
+        "image": "",
     }
 
     const validationSchema = Yup.object().shape({
@@ -68,6 +69,7 @@ function AdminCreateProductPage(props) {
                                 touched,
                                 errors,
                                 isSubmitting,
+                                setFieldValue,
                                 handleChange,
                                 handleBlur,
                                 handleSubmit
@@ -76,7 +78,11 @@ function AdminCreateProductPage(props) {
                             // console.log({ values, errors, touched, isSubmitting });
 
                             return (
-                                <Form className={`${classes.root} text-center`} onSubmit={handleSubmit}>
+                                <Form
+                                    className={`${classes.root} text-center`}
+                                    onSubmit={handleSubmit}
+                                    encType="multipart/form-data"
+                                >
                                     <div>
                                         <TextField
                                             id="filled-basic"
@@ -120,19 +126,6 @@ function AdminCreateProductPage(props) {
                                         )}
                                     </div>
                                     <div>
-                                        {/* <TextField
-                                            id="filled-basic"
-                                            name="categories"
-                                            label="Product category"
-                                            variant="filled"
-                                            value={values.categories}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        />
-                                        {errors.categories && touched.categories && (
-                                            <p>{errors.categories}</p>
-                                        )} */}
-
                                         <FormControl variant="filled" className={classes.formControl}>
                                             <InputLabel htmlFor="filled-category-native-simple">Category</InputLabel>
                                             <Select
@@ -149,6 +142,11 @@ function AdminCreateProductPage(props) {
                                                 <option value={"laptop"}>Laptop</option>
                                             </Select>
                                         </FormControl>
+                                    </div>
+                                    <div>
+                                        <input id="image" name="image" type="file" onChange={(event) => {
+                                            setFieldValue("image", event.currentTarget.files[0]);
+                                        }} />
                                     </div>
                                     <div >
                                         <Button

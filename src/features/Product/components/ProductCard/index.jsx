@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 ProductCard.propTypes = {
     product: PropTypes.object,
     onDetailClick: PropTypes.func,
@@ -18,14 +17,15 @@ function ProductCard(props) {
             onDetailClick(product);
         }
     }
+    const srcImage = "http://localhost:3000/" + product.image;
     return (
         <>
             <div className="card mt-4" onClick={handleDetailClick}>
-                <img src="https://media-exp3.licdn.com/dms/image/C4E1BAQEirVNY9qu8yg/company-background_10000/0/1561626599516?e=2159024400&v=beta&t=QlG9HEWE-7OBi8pzxvdi_7U4zZaIAeL2L6QyOsUEe5w"
+                <img src={srcImage}
                     className="card-img-top" alt="#" />
                 <div className="card-body">
                     <h5 className="card-title">{product.name}</h5>
-                    <p className="card-text">{`${product.price}.000VND`}</p>
+                    <p className="card-text price">{`${product.price}VND`}</p>
 
                 </div>
             </div>
