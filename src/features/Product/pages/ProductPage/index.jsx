@@ -17,8 +17,9 @@ function ProductPage(props) {
     const history = useHistory();
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
-    console.log(productList);
+    // console.log(productList);
     const { products } = productList;
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, []);

@@ -3,7 +3,6 @@ import { Form, Formik } from 'formik';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { ToastContainer } from 'react-toastify';
 import * as Yup from 'yup';
 import * as Actions from '../../../../actions/userActions';
 import './LoginPage.scss';
@@ -22,7 +21,6 @@ function LoginPage(props) {
     });
     return (
         <>
-            <ToastContainer />
             <div className="container form-container">
                 <div className="row">
                     <div className="wrapper">
@@ -53,7 +51,7 @@ function LoginPage(props) {
                                     <Form className="form col-sm-12 col-xs-12" onSubmit={handleSubmit}>
                                         <div className="mb-3">
                                             <TextField
-                                                id="filled-basic"
+                                                id="filled-basic username"
                                                 name="username"
                                                 label="username"
                                                 variant="filled"
@@ -67,7 +65,7 @@ function LoginPage(props) {
                                         </div>
                                         <div className="mb-3">
                                             <TextField
-                                                id="filled-basic"
+                                                id="filled-basic password"
                                                 name="password"
                                                 label="password"
                                                 variant="filled"

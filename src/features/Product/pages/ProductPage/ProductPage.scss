@@ -85,6 +85,33 @@ $font: 'Candara', cursive;
                     }
                 }
             }
+            .pagination{
+                padding-top:30px;
+                width: 80%;
+                height: 40px;
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                & a{
+                    padding: 10px;
+                    margin: 8px;
+                    border-radius: 5px;
+                    border: none;
+                    color: #000;
+                    cursor: pointer;
+                    text-decoration: none;
+                    &:hover{
+                        color: white;
+                        background-color:rgb(224, 128, 2);
+                    }
+                }
+                & .paginationActive{
+                    & a{
+                        color: white;
+                        background-color:rgb(224, 128, 2);
+                    }
+                }
+            }
         }
     }
 }

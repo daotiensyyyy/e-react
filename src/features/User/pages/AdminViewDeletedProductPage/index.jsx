@@ -28,12 +28,12 @@ function AdminViewDeletedProductPage(props) {
         <div className="container">
             <div className="row">
                 <h2>Deleted products</h2>
-                <div>
+                <div className="icon-back">
                     <IconContext.Provider value={{ color: 'black', size: '25px' }}>
                         <Link to="/admin-manage-product"><BsArrowLeft /></Link>
                     </IconContext.Provider>
                 </div>
-                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-deleted-product">
                     <Table
                         products={deleted}
                         onProductRestoreClick={handleRestoreClick}

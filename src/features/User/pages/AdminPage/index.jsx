@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './AdminPage.scss';
 
 AdminPage.propTypes = {
@@ -13,7 +11,6 @@ function AdminPage(props) {
 
     return (
         <>
-            <ToastContainer />
             <div className="container">
                 <h1 className="text-center">Welcome Admin</h1>
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">

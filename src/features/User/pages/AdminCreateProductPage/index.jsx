@@ -37,7 +37,7 @@ function AdminCreateProductPage(props) {
         "price": 0,
         "description": "",
         "categories": "",
-        "image": "",
+        "image": null,
     }
 
     const validationSchema = Yup.object().shape({
@@ -144,9 +144,10 @@ function AdminCreateProductPage(props) {
                                         </FormControl>
                                     </div>
                                     <div>
-                                        <input id="image" name="image" type="file" onChange={(event) => {
-                                            setFieldValue("image", event.currentTarget.files[0]);
-                                        }} />
+                                        <input id="image" type="file" name="image" className="file_input"
+                                            onChange={(event) => {
+                                                setFieldValue("image", event.currentTarget.files[0]);
+                                            }} />
                                     </div>
                                     <div >
                                         <Button

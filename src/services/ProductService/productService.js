@@ -77,12 +77,19 @@ export const adminDeleteProduct = (value) => {
 }
 
 export const adminCreateProduct = (data) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    formData.append("description", data.description);
+    formData.append("categories", data.categories);
+    formData.append("image", data.image);
     return axios({
         url: `${domain.adminUrl}create-product`,
         method: "POST",
-        data: data,
+        data: formData,
         headers: {
             "x-access-token": localStorage.getItem("accessToken"),
+            // "content-type": "multipart/form-data"
         },
     })
 }

@@ -26,7 +26,7 @@ function AdminViewUserPage(props) {
         <div className="container">
             <div className="row">
                 <h2>User List</h2>
-                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-user">
                     <Table
                         users={users}
                         onUserEditClick={handleEditClick}

@@ -1,80 +1,80 @@
 import * as Types from '../app/types';
 import * as Services from '../services/ProductService';
 import { createAction } from './createAction';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
-toast.configure();
+// toast.configure();
 
-const notify = (notify) => {
-    switch (notify) {
-        case "EIDT_PRODUCT_SUCCESS": {
-            return toast.success("Product has been updated!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+// const notify = (notify) => {
+//     switch (notify) {
+//         case "EIDT_PRODUCT_SUCCESS": {
+//             return toast.success("Product has been updated!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        case "RESTORE_PRODUCT_SUCCESS": {
-            return toast.success("Product has been restored!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+//         case "RESTORE_PRODUCT_SUCCESS": {
+//             return toast.success("Product has been restored!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        case "DELETE_PRODUCT_SUCCESS": {
-            return toast.success("Product has been deleted!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+//         case "DELETE_PRODUCT_SUCCESS": {
+//             return toast.success("Product has been deleted!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        case "CREATE_PRODUCT_SUCCESS": {
-            return toast.success("Create product successfully!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+//         case "CREATE_PRODUCT_SUCCESS": {
+//             return toast.success("Create product successfully!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        case "EIDT_PRODUCT_FAILED": {
-            return toast.error("Update failed!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+//         case "EIDT_PRODUCT_FAILED": {
+//             return toast.error("Update failed!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        case "RESTORE_PRODUCT_FAILED": {
-            return toast.error("Restore failed!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+//         case "RESTORE_PRODUCT_FAILED": {
+//             return toast.error("Restore failed!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        case "DELETE_PRODUCT_FAILED": {
-            return toast.error("Delete failed!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+//         case "DELETE_PRODUCT_FAILED": {
+//             return toast.error("Delete failed!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        case "CREATE_PRODUCT_FAILED": {
-            return toast.error("Create product failed!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 1500,
-                pauseOnHover: false,
-            });
-        }
+//         case "CREATE_PRODUCT_FAILED": {
+//             return toast.error("Create product failed!", {
+//                 position: toast.POSITION.TOP_RIGHT,
+//                 autoClose: 1500,
+//                 pauseOnHover: false,
+//             });
+//         }
 
-        default: { }
-    }
-};
+//         default: { }
+//     }
+// };
 
 export const actionFetchAllProducts = () => {
 
@@ -138,11 +138,11 @@ export const actionAdminEditProduct = (id, value) => {
         return Services.adminEditProduct(id, value)
             .then((result) => {
                 dispatch(createAction(Types.ADMIN_EDIT_PRODUCT, result.data));
-                notify("EDIT_PRODUCT_SUCCESS");
+                // notify("EDIT_PRODUCT_SUCCESS");
             })
             .catch((err) => {
                 console.log(err);
-                notify("EDIT_PRODUCT_FAILED");
+                // notify("EDIT_PRODUCT_FAILED");
             });
     };
 
@@ -154,11 +154,11 @@ export const actionAdminRestoreProduct = (value) => {
         return Services.adminRestoreProduct(value)
             .then((result) => {
                 dispatch(createAction(Types.ADMIN_RESTORE_PRODUCT, result.data));
-                notify("RESTORE_PRODUCT_SUCCESS");
+                // notify("RESTORE_PRODUCT_SUCCESS");
             })
             .catch((err) => {
                 console.log(err);
-                notify("RESTORE_PRODUCT_FAILED");
+                // notify("RESTORE_PRODUCT_FAILED");
             });
     };
 
@@ -184,11 +184,11 @@ export const actionAdminDeleteProduct = (value) => {
         return Services.adminDeleteProduct(value)
             .then((result) => {
                 dispatch(createAction(Types.ADMIN_DELETE_PRODUCT, result.data));
-                notify("DELETE_PRODUCT_SUCCESS");
+                // notify("DELETE_PRODUCT_SUCCESS");
             })
             .catch((err) => {
                 console.log(err);
-                notify("DELETE_PRODUCT_FAILED");
+                // notify("DELETE_PRODUCT_FAILED");
             });
     };
 
@@ -199,11 +199,11 @@ export const actionAdminCreateProduct = (values) => {
         return Services.adminCreateProduct(values)
             .then((result) => {
                 dispatch(createAction(Types.ADMIN_CREATE_PRODUCT, result.data));
-                notify("CREATE_PRODUCT_SUCCESS");
+                // notify("CREATE_PRODUCT_SUCCESS");
             })
             .catch((err) => {
                 console.log(err);
-                notify("CREATE_PRODUCT_FAILED");
+                // notify("CREATE_PRODUCT_FAILED");
             });
     };
 };
