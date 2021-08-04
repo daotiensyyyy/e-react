@@ -2,7 +2,7 @@ import * as Types from '../app/types';
 
 const initialState = {
     products: [],
-    productDetail: null,
+    productDetail: {},
     deleted: [],
 }
 
@@ -12,6 +12,7 @@ const productReducer = (state = initialState, action) => {
 
         case Types.GET_PRODUCTS:
             state.products = action.payload;
+            state.productDetail = null;
             return { ...state };
 
         case Types.GET_PRODUCT_BY_ID:

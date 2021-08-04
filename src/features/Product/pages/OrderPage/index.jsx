@@ -46,12 +46,10 @@ function OrderPage(props) {
 
     const initialValues = {
         "code": code,
-        "billingAddress": {
-            "customerName": "",
-            "customerEmail": "",
-            "customerAddress": "",
-            "customerPhone": ""
-        },
+        "customerName": "",
+        "customerEmail": "",
+        "customerAddress": "",
+        "customerPhone": "",
         "shippingMethod": "COD",
         "paymentMethod": "COD",
         "items": [
@@ -69,7 +67,7 @@ function OrderPage(props) {
         customerEmail: Yup.string().email('Invalid email format').required('This field is required'),
         customerAddress: Yup.string().required('This field is required'),
         customerPhone: Yup.string().required('This field is required'),
-        qty: Yup.number().min(1, 'Minimum 1').required('This field is required'),
+        // qty: Yup.number().min(1, 'Minimum 1').required('This field is required'),
     });
     return (
         <>
@@ -106,8 +104,9 @@ function OrderPage(props) {
                                         handleSubmit
                                     } = formikProps;
 
-                                    // console.log({ values, errors, touched, isSubmitting });
 
+                                    // console.log(formikProps.values.items);
+                                    // console.log({ values, errors, touched, isSubmitting });
                                     return (
                                         <Form className={classes.root} onSubmit={handleSubmit}>
                                             <TextField
@@ -115,7 +114,7 @@ function OrderPage(props) {
                                                 name="customerName"
                                                 label="name"
                                                 variant="filled"
-                                                value={values.customerName || ''}
+                                                value={values.customerName}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                             />
@@ -127,7 +126,7 @@ function OrderPage(props) {
                                                 name="customerEmail"
                                                 label="email"
                                                 variant="filled"
-                                                value={values.customerEmail || ''}
+                                                value={values.customerEmail}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                             />
@@ -139,7 +138,7 @@ function OrderPage(props) {
                                                 name="customerAddress"
                                                 label="address"
                                                 variant="filled"
-                                                value={values.customerAddress || ''}
+                                                value={values.customerAddress}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                             />
@@ -151,22 +150,26 @@ function OrderPage(props) {
                                                 name="customerPhone"
                                                 label="phone"
                                                 variant="filled"
-                                                value={values.customerPhone || ''}
+                                                value={values.customerPhone}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                             />
                                             {errors.customerPhone && touched.customerPhone && (
                                                 <p>{errors.customerPhone}</p>
                                             )}
-                                            <TextField
-                                                id="filled-basic"
-                                                name="qty"
-                                                label="qty"
-                                                variant="filled"
-                                                value={values.qty || ''}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                            />
+                                            {values.items.map((item, index) =>
+                                                <TextField
+                                                    key={index}
+                                                    id="filled-basic"
+                                                    type="number"
+                                                    name={`item[${index}].qty`}
+                                                    label="qty"
+                                                    variant="filled"
+                                                    value={values.items.qty}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                />
+                                            )}
                                             {errors.qty && touched.qty && (
                                                 <p>{errors.qty}</p>
                                             )}

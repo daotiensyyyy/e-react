@@ -8,11 +8,12 @@ ViewOrderPage.propTypes = {
 function ViewOrderPage(props) {
     const orderList = useSelector(state => state.orderList);
     const { orderDetail } = orderList;
-    // console.log(orderDetail);
+    console.log('order_detail', orderDetail);
     return (
         <>
             <div className="container">
                 <div className="row">
+                    <h3>Your order</h3>
                     <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 order">
                         <div className="row">
                             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">

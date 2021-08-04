@@ -13,7 +13,7 @@ ProductDetail.defaultProps = {
 
 function ProductDetail(props) {
     const { detail, onOrderClick } = props;
-    // console.log(detail);
+    console.log('detail', detail);
     const handleOrderClick = () => {
         if (onOrderClick) {
             onOrderClick(detail);
@@ -25,7 +25,7 @@ function ProductDetail(props) {
             <div className="product-name">{detail ? detail.name : ''}</div>
             <hr className="hr-price" />
             <div className="product-price">
-                <h3>{detail ? detail.price : ''}.000vnd</h3>
+                <h3>{detail ? detail.price : ''}vnd</h3>
             </div>
             <hr className="hr-price" />
             <div className="product-description">

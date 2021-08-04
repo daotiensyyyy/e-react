@@ -12,7 +12,7 @@ ProductList.defaultProps = {
 }
 function ProductList(props) {
     const { productList, onProductDetailClick } = props;
-    console.log('Products', productList);
+    // console.log('Products', productList);
     const [pageNumber, setPageNumber] = useState(0);
     const productsPerPage = 9;
     const pageVisited = pageNumber * productsPerPage;
