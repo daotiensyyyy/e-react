@@ -25,14 +25,14 @@ change img-url in src\features\Product\components\ProductCard\index.jsx
 
 ### Features:
 ADMIN:
-- Login
-- Logout
-- Manage product (create, edit, delete, restore)
-- Manage user (show table)
+- Login.
+- Logout.
+- Manage product (create, edit, delete, restore).
+- Manage user (show table). <br />
 USER:
-- View product
-- Order
-- View order
+- View product.
+- Order.
+- View order.
 
 
 
