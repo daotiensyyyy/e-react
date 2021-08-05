@@ -6,6 +6,7 @@ import Table from '../../components/Product/Table';
 import { BsFillTrashFill } from "react-icons/bs";
 import { MdAddBox } from "react-icons/md";
 import { IconContext } from 'react-icons/lib';
+import './AdminViewProduct.scss'
 
 AdminViewProductPage.propTypes = {
 

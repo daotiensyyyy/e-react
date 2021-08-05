@@ -104,6 +104,34 @@ export const actionFetchProductById = (value) => {
 
 }
 
+export const actionFetchAllCategories = () => {
+
+    return (dispatch) => {
+        return Services.getAllCategories()
+            .then((result) => {
+                dispatch(createAction(Types.GET_ALL_CATEGORIES, result.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+}
+
+export const actionFetchProductByCategory = (value) => {
+
+    return (dispatch) => {
+        return Services.getProductByCategory(value)
+            .then((result) => {
+                dispatch(createAction(Types.GET_PRODUCT_BY_CATEGORY, result.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+}
+
 export const actionAdminFetchAllProducts = () => {
 
     return (dispatch) => {

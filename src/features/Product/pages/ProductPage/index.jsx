@@ -18,25 +18,37 @@ function ProductPage(props) {
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
     // console.log(productList);
-    const { products } = productList;
+    const { products, categories } = productList;
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, []);
     useEffect(() => {
         dispatch(Actions.actionFetchAllProducts());
+        dispatch(Actions.actionFetchAllCategories());
     }, [dispatch]);
     const handleDetailClick = (product) => {
         const productUrl = `product/details/${product._id}`;
         // console.log("product url", productUrl);
         history.push(productUrl);
     }
+    const handleLoadAllProducts = () => {
+        dispatch(Actions.actionFetchAllProducts());
+    }
+    const handleLoadProductsClick = (category) => {
+        dispatch(Actions.actionFetchProductByCategory(category._id));
+    }
+
     return (
         <>
             <div className="container product-container">
                 <NavigationBar />
                 <div className="row">
-                    <CategoryBar />
+                    <CategoryBar
+                        categories={categories}
+                        onHandleLoadProductsClick={handleLoadProductsClick}
+                        onHandleLoadAll={handleLoadAllProducts}
+                    />
                     <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9 product-list">
                         <div className="titlepage">
                             <h2> Our <strong className="llow">products</strong> </h2>

@@ -15,6 +15,21 @@ export const getProductById = (value) => {
     })
 }
 
+export const getAllCategories = () => {
+    return axios({
+        url: `${domain.baseUrl}all-categories`,
+        method: "GET",
+    });
+};
+
+
+export const getProductByCategory = (value) => {
+    return axios({
+        url: `${domain.baseUrl}category/${value}/product`,
+        method: "GET",
+    })
+}
+
 export const adminGetAllProducts = () => {
     return axios({
         url: `${domain.adminUrl}all-products`,

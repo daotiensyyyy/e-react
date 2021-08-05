@@ -23,16 +23,16 @@ function ViewOrderPage(props) {
                             </div>
                             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div className="order-customer__name">
-                                    Name: {orderDetail.billingAddress.name}
+                                    Name: {orderDetail.customerName}
                                 </div>
                                 <div className="order-customer__email">
-                                    Email: {orderDetail.billingAddress.email}
+                                    Email: {orderDetail.customerEmail}
                                 </div>
                                 <div className="order-customer__address">
-                                    Address: {orderDetail.billingAddress.address}
+                                    Address: {orderDetail.customerAddress}
                                 </div>
                                 <div className="order-customer__phone">
-                                    Phone: {orderDetail.billingAddress.phone}
+                                    Phone: {orderDetail.customerPhone}
                                 </div>
                             </div>
                             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -1,5 +1,7 @@
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
+export const GET_PRODUCT_BY_CATEGORY = 'GET_PRODUCT_BY_CATEGORY';
+export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 
 
 export const LOGIN = 'LOGIN';

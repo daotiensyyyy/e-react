@@ -4,6 +4,7 @@ const initialState = {
     products: [],
     productDetail: {},
     deleted: [],
+    categories: [],
 }
 
 const productReducer = (state = initialState, action) => {
@@ -17,6 +18,15 @@ const productReducer = (state = initialState, action) => {
 
         case Types.GET_PRODUCT_BY_ID:
             state.productDetail = action.payload;
+            return { ...state };
+
+        case Types.GET_ALL_CATEGORIES:
+            state.categories = action.payload;
+            return { ...state };
+
+        case Types.GET_PRODUCT_BY_CATEGORY:
+            state.products = action.payload;
+            state.productDetail = null;
             return { ...state };
 
         case Types.ADMIN_GET_ALL_PRODUCTS:

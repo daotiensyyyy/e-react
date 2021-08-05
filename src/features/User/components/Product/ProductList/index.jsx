@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
 import ProductRow from '../ProductRow';
+import ReactPaginate from 'react-paginate';
+
 
 ProductList.propTypes = {
     productList: PropTypes.array,
@@ -17,18 +19,40 @@ ProductList.defaultProps = {
 
 function ProductList(props) {
     const { productList, onHandleProductEditClick, onHandleProductDeleteClick } = props;
-    return (
-        <>
-            {productList.map(product =>
+    const [pageNumber, setPageNumber] = useState(0);
+    const productsPerPage = 10;
+    const pageVisited = pageNumber * productsPerPage;
+    const displayProducts = productList
+        .slice(pageVisited, pageVisited + productsPerPage)
+        .map(product => {
+            return (
                 <ProductRow
                     key={product._id}
                     product={product}
                     onHandleClick={onHandleProductEditClick}
                     onHandleDeleteClick={onHandleProductDeleteClick}
                 />
-            )
-            }
 
+            );
+        });
+    const pageCount = Math.ceil(productList.length / productsPerPage);
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    }
+    return (
+        <>
+            {displayProducts}
+            <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"pagination"}
+                previousLinkClassName={"previousBtn"}
+                nextLinkClassName={"nextBtn"}
+                disabledClassName={"paginationDisabled"}
+                activeClassName={"paginationActive"}
+            />
         </>
     );
 }
