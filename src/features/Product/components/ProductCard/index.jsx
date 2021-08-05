@@ -17,7 +17,7 @@ function ProductCard(props) {
             onDetailClick(product);
         }
     }
-    const srcImage = "http://localhost:3000/" + product.image;
+    const srcImage = "https://nodejs-e-api.herokuapp.com/" + product.image;
     return (
         <>
             <div className="card mt-4" onClick={handleDetailClick}>
